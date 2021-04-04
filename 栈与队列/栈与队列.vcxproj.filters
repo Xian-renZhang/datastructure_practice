@@ -3,5 +3,6 @@
   <ItemGroup>
     <ClCompile Include="栈\括号匹配.c" />
     <ClCompile Include="栈\顺序栈.c" />
+    <ClCompile Include="队列\循环队列.c" />
   </ItemGroup>
 </Project>
