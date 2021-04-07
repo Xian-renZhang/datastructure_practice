@@ -4,5 +4,6 @@
     <ClCompile Include="顺序表\顺序表.c" />
     <ClCompile Include="单链表\删除重复元素.c" />
     <ClCompile Include="单链表\单链表.c" />
+    <ClCompile Include="单链表\集合并集.c" />
   </ItemGroup>
 </Project>

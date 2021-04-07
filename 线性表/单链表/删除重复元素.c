@@ -9,7 +9,7 @@ int main()
 	InitList(&L);
 	CreateFromTail(L);
 	DelSameX(L);
-	DispList(L);
+	PrintList(L);
 	return 0;
 }
 

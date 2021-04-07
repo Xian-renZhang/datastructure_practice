@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define _CRT_SECURE_NO_WARNINGS
 #include "À≥–Ú’ª.c"
-//commit test
+
 int BracketMatch(char* str);
 
 int main()
@@ -10,7 +10,7 @@ int main()
     char str[100];
 
     printf("Please input a string:");  
-    gets(str);
+    gets_s(str);
     switch (BracketMatch(str))
     {
     case 0:

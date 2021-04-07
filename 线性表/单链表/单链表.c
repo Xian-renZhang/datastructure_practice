@@ -1,7 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
-
+#define TRUE          1
+#define FALSE         0
+#define OK            1
+#define ERROR         0
 //使用前请设置ElemType及相应的输入输出函数
 typedef char ElemType;
 
@@ -15,7 +18,7 @@ void InitList(LinkList* L) {
 	*L = (LinkList)malloc(sizeof(Node));
 	if (NULL == *L) {
 		printf("内存分配不成功！\n");
-		exit(-1);
+		exit(ERROR);
 	}
 	//将头结点的next指针设为空指针
 	(*L)->next = NULL;
@@ -42,7 +45,7 @@ void CreateFromTail(LinkList L) {
 }
 
 //单链表的输出
-void DispList(LinkList L) {
+void PrintList(LinkList L) {
 	Node* p;
 	p = L->next;
 	while (p != NULL) {
@@ -85,46 +88,56 @@ Node* Get(LinkList L, int i) {
 	return p;
 }
 
+// 当第i个元素存在时，其值赋给e并返回OK，否则返回ERROR
+int GetData(LinkList L, int i, ElemType* e) {   
+	Node* p;
+	if (!(p = Get(L, i))) {
+		return ERROR;
+	}
+	*e = p->data;
+	return OK;
+}
+
 //在带头结点的单链表中第i个位置插入值为e的新值
 int InsList(LinkList L, ElemType e, int i) {
 	Node* pre, * s;
 	if (i < 1) {
-		return 1;
+		return ERROR;
 	}
 	pre = ((i == 1) ? L : Get(L, i - 1));
 	if (pre == NULL) {
 		printf("插入位置不合理！");
-		return 1;
+		return ERROR;
 	}
 	s = (Node*)malloc(sizeof(Node));
 	if (NULL == s) {
 		printf("内存分配不成功！\n");
-		exit(-1);
+		exit(ERROR);
 	}
 	else {
 		s->data = e;
 	}
 	s->next = pre->next;
 	pre->next = s;
-	return 0;
+	return OK;
 }
 
 //在带头结点的单链表中删除第i个元素，并将删除的元素保存到变量*e中
 int DelList(LinkList L, int i, ElemType* e) {
 	Node* pre, * r;
 	if (i < 1) {
-		return 1;
+		return ERROR;
 	}
 	pre = ((i == 1) ? L : Get(L, i - 1));
 	if (pre == NULL || pre->next == NULL) {
 		printf("被删结点的位置不合理！");
-		return 1;
+		return ERROR;
 	}
 	r = pre->next;
 	pre->next = r->next;
 	*e = r->data;
 	free(r);
-	return 0;
+	return OK;
 }
 
 //在单链表中查找值为key的结点
@@ -143,10 +156,10 @@ Node* Locate(LinkList L, ElemType key) {
 //判断单链表是否为空
 int ListEmpty(LinkList L) {
 	if (L->next == NULL) {
-		return 1;
+		return TRUE;
 	}
 	else {
-		return 0;
+		return FALSE;
 	}
 }
 
@@ -160,7 +173,7 @@ int ClearList(LinkList L) {
 		p = q;
 	}
 	L->next = NULL;
-	return 0;
+	return OK;
 }
 
 //销毁单链表

@@ -50,7 +50,7 @@ int DeleteQueue(SeqQueue* Q, ElemType* x) {
 	if (Q->front == Q->rear) {
 		return FALSE;
 	}
-	x = Q->elem[Q->front];
+	*x = Q->elem[Q->front];
 	Q->front = (Q->front + 1) % MAXSIZE;
 	return TRUE;
 }
@@ -60,7 +60,7 @@ int GetHead(SeqQueue* Q, ElemType* x) {
 	if (Q->front == Q->rear) {
 		return FALSE;
 	}
-	x = Q->elem[Q->front];
+	*x = Q->elem[Q->front];
 	return TRUE;
 }
 
