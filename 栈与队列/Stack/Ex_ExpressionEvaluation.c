@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#include "顺序栈.c"
+#include "SequenceStack.c"
 //改进：
 //1.使用单类型栈还是多类型栈
 //2.如何进行多位数的运算

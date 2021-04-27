@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "µ¥Á´±í.c"
+#include "LinkedList.c"
 
 int DelSameX(LinkList L);
 

@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "单链表.c"
+#include "LinkedList.c"
 
 // 将所有在线性表Lb中但不在La中的数据元素插入到La中
 int Union(LinkList La, LinkList Lb) {   

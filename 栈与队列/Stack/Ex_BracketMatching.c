@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define _CRT_SECURE_NO_WARNINGS
-#include "À≥–Ú’ª.c"
+#include "SequenceStack.c"
 
 int BracketMatch(char* str);
 
