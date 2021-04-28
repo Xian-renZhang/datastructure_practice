@@ -3,88 +3,90 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef int ElemType;
+typedef int* ElemType;
 
 typedef struct {
 	ElemType elem[MAXSIZE];
 	int front;
 	int rear;
-}SeqQueue;
+}seqQueue;
 
-//初始化队列Q
-int InitQueue(SeqQueue* Q) {
-	Q->front = 0;
-	Q->rear = 0;
-	
-	return  TRUE;
+//初始化队列
+void initQueue(seqQueue* queue) {
+	queue->front = 0;
+	queue->rear = 0;
 }
 
 //判断队列是否为空
-int IsEmpty(SeqQueue* Q) {
-	if (Q->front == Q->rear) {
+int isEmpty(seqQueue* queue) {
+	if (queue->front == queue->rear) {
 		return TRUE;
 	}
-	return FALSE;
+	else {
+		return FALSE;
+	}
 }
 
 //判断队列是否已满
-int IsFull(SeqQueue* Q) {
-	if ((Q->rear + 1) % MAXSIZE == Q->front) {
+int isFull(seqQueue* queue) {
+	if ((queue->rear + 1) % MAXSIZE == queue->front) {
 		return TRUE;
 	}
-	return FALSE;
+	else {
+		return FALSE;
+	}
 }
 
 //在队列的队尾插入x
-int EnterQueue(SeqQueue* Q, ElemType x) {
-	if ((Q->rear + 1) % MAXSIZE == Q->front) {
+int enterQueue(seqQueue* queue, ElemType x) {
+	if ((queue->rear + 1) % MAXSIZE == queue->front) {
 		return FALSE;
 	}
-	Q->elem[Q->rear] = x;
-	Q->rear = (Q->rear + 1) % MAXSIZE;
+	queue->elem[queue->rear] = x;
+	queue->rear = (queue->rear + 1) % MAXSIZE;
 	return TRUE;
 }
 
 //将队列的队头元素出队，并用x返回其值
-int DeleteQueue(SeqQueue* Q, ElemType* x) {
-	if (Q->front == Q->rear) {
+int deleteQueue(seqQueue* queue, ElemType* x) {
+	if (queue->front == queue->rear) {
 		return FALSE;
 	}
-	*x = Q->elem[Q->front];
-	Q->front = (Q->front + 1) % MAXSIZE;
+	*x = queue->elem[queue->front];
+	queue->front = (queue->front + 1) % MAXSIZE;
 	return TRUE;
 }
 
 //取队列的队头元素
-int GetHead(SeqQueue* Q, ElemType* x) {
-	if (Q->front == Q->rear) {
+int getHead(seqQueue* queue, ElemType* x) {
+	if (queue->front == queue->rear) {
 		return FALSE;
 	}
-	*x = Q->elem[Q->front];
+	*x = queue->elem[queue->front];
 	return TRUE;
 }
 
 //将队列置为空队列
-int Clear(SeqQueue* Q) {
-	Q->front = Q->rear = 0;
+int clearQueue(seqQueue* queue) {
+	queue->front = queue->rear = 0;
 	return TRUE;
 }
 
 //返回队列元素个数
-int QueueLength(SeqQueue* Q) {
-	if (Q->front == Q->rear) {
+int queueLength(seqQueue* queue) {
+	if (queue->front == queue->rear) {
 		return FALSE;
 	}
-	return (Q->rear - Q->front + MAXSIZE) % MAXSIZE;
+	return (queue->rear - queue->front + MAXSIZE) % MAXSIZE;
 }
 
 //打印队列
-int PrintQueue(SeqQueue* Q) {
-	if (Q->front == Q->rear) {
+int printQueue(seqQueue* queue) {
+	if (queue->front == queue->rear) {
 		return FALSE;
 	}
-	for (int i = Q->front; i != Q->rear; i = (i + 1) % MAXSIZE) {
-		printf("&d ", Q->elem[i]);
+	for (int i = queue->front; i != queue->rear; i = (i + 1) % MAXSIZE) {
+		printf("&d ", queue->elem[i]);
 	}
 	return TRUE;
 }

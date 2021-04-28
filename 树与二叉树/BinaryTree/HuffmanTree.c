@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MaxWeight 100;
+#define MAX_WEIGHT 100;
 
 typedef struct
 {
@@ -15,7 +15,7 @@ typedef char** HuffmanCode; // 动态分配数组，存储哈夫曼编码
 void select(HuffmanTree ht, int n, int* s1, int* s2)
 {   // 在ht[1]~ht[n]范围内选择两个parent为0且weight最小的结点，其序号分别赋值给s1、s2
     int i,node1,node2;
-    int min = MaxWeight;
+    int min = MAX_WEIGHT;
     for (i = 1; i <= n; i++)
     {
         if ((ht[i].parent == 0)&&(ht[i].weight<min)) 
@@ -24,7 +24,7 @@ void select(HuffmanTree ht, int n, int* s1, int* s2)
             node1 = i;
         }
     }
-    min = MaxWeight;
+    min = MAX_WEIGHT;
     for (i = 1; i <= n; i++)
     {
         if (i == node1)
@@ -106,7 +106,7 @@ int main()
     m = 2 * n - 1;
 
     // 0号单元均未使用
-    HT = (HuffmanCode*)malloc((m + 1) * sizeof(HuffmanCode));
+    HT = (HTNode*)malloc((m + 1) * sizeof(HTNode));
     HC = (char**)malloc((n+1) * sizeof(char*));
     w = (int*)malloc((n + 1) * sizeof(int));
 
