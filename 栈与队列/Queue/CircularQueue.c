@@ -3,7 +3,7 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef int* ElemType;
+typedef int ElemType;
 
 typedef struct {
 	ElemType elem[MAXSIZE];

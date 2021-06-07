@@ -3,5 +3,6 @@
   <ItemGroup>
     <ClCompile Include="BinaryTree\BinaryTree.c" />
     <ClCompile Include="BinaryTree\HuffmanTree.c" />
+    <ClCompile Include="BinaryTree\BinarySearchTree.c" />
   </ItemGroup>
 </Project>
